@@ -25,7 +25,7 @@ export class AppRoot extends LitElement {
     this._router = new Router(this, [
       {
         path: `${BASE_PATH}/`,
-        render: () => html`<home-page></home-page>`,
+        render: () => html`<home-page url_config="${BASE_PATH}"></home-page>`,
       },
       {
         path: `${BASE_PATH}/script-vistoria-moto`,

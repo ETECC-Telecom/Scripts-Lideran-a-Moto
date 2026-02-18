@@ -1,15 +1,11 @@
 import { LitElement, html, css, unsafeCSS} from 'lit';
 import bootstrapGlobal from 'bootstrap/dist/css/bootstrap.min.css?inline'; 
 
-// Detecta se estamos no GitHub Pages ou Localhost
-const BASE_PATH = window.location.hostname.includes('github.io') 
-  ? '/Scripts-Lideran-a-Moto' 
-  : '';
-
 export class Home_Page extends LitElement {
     // 1. Em vez de @property, use o objeto static properties
     static properties = {
-        nome: { type: String }
+        nome: { type: String },
+        url_config: {type: String}
     };
 
     static styles = [
@@ -23,6 +19,7 @@ export class Home_Page extends LitElement {
     constructor() {
         super();
         this.nome = "Usuário";
+        this.url_config = ''
     }
 
     render() {
@@ -52,7 +49,7 @@ export class Home_Page extends LitElement {
                     </li>
                     <li class="nav-item">
                         <div class="d-grid">
-                            <a class="btn btn-outline-light m-3" href="${BASE_PATH}/script-vistoria-moto">Fechamento de Vistoria da Moto</a>
+                            <a class="btn btn-outline-light m-3" href="${this.url_config}/script-vistoria-moto">Fechamento de Vistoria da Moto</a>
                         </div>
                     </li>
                 </ul>
