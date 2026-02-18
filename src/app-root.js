@@ -7,6 +7,11 @@ import {Home_Page} from './pages/home'
 import { Erro_404 } from './pages/erro_404';
 import { Script_Moto } from './pages/script_vistoria_moto';
 
+// Detecta se estamos no GitHub Pages ou Localhost
+const BASE_PATH = window.location.hostname.includes('github.io') 
+  ? '/Scripts-Lideran-a-Moto' 
+  : '';
+  
 export class AppRoot extends LitElement {
   static properties = {
     // Não precisamos mais de _routeView aqui, o Router cuida disso
@@ -19,11 +24,11 @@ export class AppRoot extends LitElement {
     // O primeiro argumento 'this' conecta o router ao ciclo de vida do Lit
     this._router = new Router(this, [
       {
-        path: '/',
+        path: `${BASE_PATH}/`,
         render: () => html`<home-page></home-page>`,
       },
       {
-        path: '/script-vistoria-moto',
+        path: `${BASE_PATH}/script-vistoria-moto`,
         render: () => html`<moto-script></moto-script>`,
       },
       {
@@ -33,7 +38,7 @@ export class AppRoot extends LitElement {
       },
       {
         // Rota de "Catch-all" para erro 404
-        path: '/*',
+        path: `${BASE_PATH}/*`,
         render: () => html`<erro-404></erro-404>`,
       }
     ]);
