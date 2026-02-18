@@ -55,7 +55,9 @@ export class AppRoot extends LitElement {
   render() {
     return html`
       <main class="bg-dark">
-        <navebar-custom></navebar-custom>
+        <navebar-custom
+            url_config="${BASE_PATH}"
+            ></navebar-custom>
         <br>
         <article class="container ">
           ${this._router.outlet()}
