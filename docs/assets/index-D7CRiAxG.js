@@ -5,10 +5,10 @@
       // :host { display: block; margin: 20px; }
     
     `];constructor(){super(),this.nome="Usuário",this.url_config=""}render(){return k`
-      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <nav class="navbar navbar-expand-sm/${this.url_config} bg-dark navbar-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/${this.url_config}">
-            <img alt="Scripts Liderança" style="height: 60px; width: auto;" src="/logo.svg" alt="New York">
+          <a class="navbar-brand" href="${this.url_config}">
+            <img alt="Scripts Liderança" style="height: 60px; width: auto;" src="${this.url_config}/logo.svg" alt="New York">
           </a>
         </div>
       </nav>
