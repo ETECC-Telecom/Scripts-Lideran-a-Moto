@@ -4,7 +4,8 @@ import bootstrapGlobal from 'bootstrap/dist/css/bootstrap.min.css?inline';
 export class Selecao_Moto extends LitElement {
     // 1. Em vez de @property, use o objeto static properties
     static properties = {
-        identificacao: { type: String }
+        identificacao: { type: String },
+        valor:{type:String}
     };
 
     static styles = [
@@ -42,21 +43,21 @@ export class Selecao_Moto extends LitElement {
                         @change="${this._dispararPlaca}"
                         >
                         <option value="Não Informado">Selecione uma Placa</option>
-                        <option value="ETE 0C54">ETE 0C54</option>
-                        <option value="FGY 9J67">FGY 9J67</option>
-                        <option value="ETC 0I72">ETC 0I72</option>
-                        <option value="ETC 0I51">ETC 0I51</option>
-                        <option value="ETE 0C21">ETE 0C21</option>
-                        <option value="ETE 0I43">ETE 0I43</option>
-                        <option value="DWA 9B76">DWA 9B76</option>
-                        <option value="EOY 0E15">EOY 0E15</option>
-                        <option value="ETE 0C92">ETE 0C92</option>
-                        <option value="FVL 1A93">FVL 1A93</option>
-                        <option value="ETC 0I52">ETC 0I52</option>
-                        <option value="ETC 0J71">ETC 0J71</option>
-                        <option value="ETE 0I81">ETE 0I81</option>
-                        <option value="STR 7C16">STR 7C16</option>
-                        <option value="CKG 5G47">CKG 5G47</option>
+                        <option value="ETE 0C54" ?selected="${this.valor === 'ETE 0C54'}">ETE 0C54</option>
+                        <option value="FGY 9J67" ?selected="${this.valor === 'FGY 9J67'}">FGY 9J67</option>
+                        <option value="ETC 0I72" ?selected="${this.valor === 'ETC 0I72'}">ETC 0I72</option>
+                        <option value="ETC 0I51" ?selected="${this.valor === 'ETC 0I51'}">ETC 0I51</option>
+                        <option value="ETE 0C21" ?selected="${this.valor === 'ETE 0C21'}">ETE 0C21</option>
+                        <option value="ETE 0I43" ?selected="${this.valor === 'ETE 0I43'}">ETE 0I43</option>
+                        <option value="DWA 9B76" ?selected="${this.valor === 'DWA 9B76'}">DWA 9B76</option>
+                        <option value="EOY 0E15" ?selected="${this.valor === 'EOY 0E15'}">EOY 0E15</option>
+                        <option value="ETE 0C92" ?selected="${this.valor === 'ETE 0C92'}">ETE 0C92</option>
+                        <option value="FVL 1A93" ?selected="${this.valor === 'FVL 1A93'}">FVL 1A93</option>
+                        <option value="ETC 0I52" ?selected="${this.valor === 'ETC 0I52'}">ETC 0I52</option>
+                        <option value="ETC 0J71" ?selected="${this.valor === 'ETC 0J71'}">ETC 0J71</option>
+                        <option value="ETE 0I81" ?selected="${this.valor === 'ETE 0I81'}">ETE 0I81</option>
+                        <option value="STR 7C16" ?selected="${this.valor === 'STR 7C16'}">STR 7C16</option>
+                        <option value="CKG 5G47" ?selected="${this.valor === 'CKG 5G47'}">CKG 5G47</option>
                         
                     </select>
                 </div>

@@ -4,7 +4,8 @@ import bootstrapGlobal from 'bootstrap/dist/css/bootstrap.min.css?inline';
 export class EPI extends LitElement {
     // 1. Em vez de @property, use o objeto static properties
     static properties = {
-        titulo: { type: String }
+        titulo: { type: String },
+        valor:{type:String}
     };
 
     static styles = [
@@ -37,11 +38,11 @@ export class EPI extends LitElement {
                 <div class="mb-3 mt-3" @change="${this._dispararEPI}">
                     <label class="form-label">EPIs (Capacete/Luva/Bota):</label>
                     <div class="form-check">
-                        <input type="radio" class="form-check-input" id="radio6" name="opt-epi" value="OK" checked>
+                        <input type="radio" class="form-check-input" id="radio6" name="opt-epi" value="OK" ?checked="${this.valor === 'OK'}">
                         <label class="form-check-label" for="radio6">OK</label>
                     </div>
                     <div class="form-check">
-                        <input type="radio" class="form-check-input" id="radio7" name="opt-epi" value="Pendente">
+                        <input type="radio" class="form-check-input" id="radio7" name="opt-epi" value="Pendente" ?checked="${this.valor === 'Pendente'}">
                         <label class="form-check-label" for="radio7">Pendente</label>
                     </div>
                 </div>

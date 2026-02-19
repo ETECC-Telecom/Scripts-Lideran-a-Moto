@@ -18,11 +18,17 @@ import { Alerta_Toast } from '../components/Alerta_Toast';
 
 import Copiar_Area_Transferencia from '../controller/copiar_area_transferencia';
 
+import { Salvar_Local_Storage } from '../model/salvar_local_storage';
+import { Captutar_Local_Storage } from '../model/salvar_local_storage';
+import { Limpar_Local_Storage } from '../model/salvar_local_storage';
+
 export class Script_Moto extends LitElement {
     // 1. Em vez de @property, use o objeto static properties
+    
     static properties = {
         nome: { type: String },
-        dadosVistoria: {type: Object}
+        dadosVistoria: {type: Object},
+        Banco_Local_Storage:{type: String}
     };
 
     static styles = [
@@ -36,41 +42,53 @@ export class Script_Moto extends LitElement {
     constructor() {
         super();
 
+        this.Banco_Local_Storage = "Vistoria_Moto";
+        
         // Formatando a Data: 
         const dataObj = new Date(new Date().toISOString().split('T')[0] + 'T00:00:00'); // Adicionamos o tempo para evitar erro de fuso
         const dataFormatada = new Intl.DateTimeFormat('pt-BR').format(dataObj);
         
-        this.dadosVistoria = {
-            data: dataFormatada, //Adicionando a Data atual ao cadastro
-            tecnico: "Não Informado",
-            placa: "Não Informado",
-            hodometro: "Não Informado",
-            combustivel: "Não Informado",
-            documento: "OK",
-            EPI: "OK",
-            comentario_conformidade: "",
-            check_luz_freio: "OK",
-            check_iluminacao_dianteira: "OK",
-            check_setas: "OK",
-            comentario_tecnico_eletrica: "",
-            check_freio: "OK",
-            check_twi: "OK",
-            check_retrovisor_antena: "OK",
-            check_transmissao: "OK",
-            lavagem_semanal: "Sim",
-            conservacao: "Ótimo",
-            comentario_tecnico_mecanica: "",
-            comentario_tecnico_higienizacao: "",
-            status_geral: "Não Informado",
-            moto_extra_entregue: "Não",
-            moto_extra: "Não Informado",
-            comentario_geral: ""
-        };
+        const data = Captutar_Local_Storage(this.Banco_Local_Storage);
+        
+        // Verifica se os dados retornados existem para adicionar a estrutura do componente.
+        if (data) {
+            this.dadosVistoria = JSON.parse(data);
+        } else {
+            this.dadosVistoria = {
+                data: dataFormatada, //Adicionando a Data atual ao cadastro
+                tecnico: "Não Informado",
+                placa: "Não Informado",
+                hodometro: "Não Informado",
+                combustivel: "Não Informado",
+                documento: "OK",
+                EPI: "OK",
+                comentario_conformidade: "",
+                check_luz_freio: "OK",
+                check_iluminacao_dianteira: "OK",
+                check_setas: "OK",
+                comentario_tecnico_eletrica: "",
+                check_freio: "OK",
+                check_twi: "OK",
+                check_retrovisor_antena: "OK",
+                check_transmissao: "OK",
+                lavagem_semanal: "Sim",
+                conservacao: "Ótimo",
+                comentario_tecnico_mecanica: "",
+                comentario_tecnico_higienizacao: "",
+                status_geral: "Não Informado",
+                moto_extra_entregue: "Não",
+                moto_extra: "Não Informado",
+                comentario_geral: ""
+            };
+        }    
+
     }
 
     // Função única para atualizar o estado
     atualizarCampo(campo, valor) {
         this.dadosVistoria = { ...this.dadosVistoria, [campo]: valor };
+        //Qualquer alteração feita nos camppos, serão adicionadas diretamente ao local storage.
+        Salvar_Local_Storage(this.Banco_Local_Storage, this.dadosVistoria)
     }
 
     gerar_script_abertura(){
@@ -153,6 +171,12 @@ ${comentario_geral}
 
     }
 
+    limpar_script_moto(){
+        Limpar_Local_Storage(this.Banco_Local_Storage);
+        const toast = this.shadowRoot.getElementById('meuAlerta');
+        toast.show('Script Limpo com sucesso!', "success");
+    }
+
     render() {
         return html`
             <div class="bg-dark text-light">
@@ -162,24 +186,29 @@ ${comentario_geral}
                     <h2>Dados de Identificação:</h2>
                     <hr>
 
-                    <selecao-data 
+                    <selecao-data
+                        .valor="${this.dadosVistoria.data}"
                         titulo="Vistoria"
                         @data-alterada="${(e) => this.atualizarCampo('data',e.detail.valor)}">     
                     ></selecao-data>
                     
                     <selecao-tecnico
+                        .valor="${this.dadosVistoria.tecnico}"
                         @tecnico-alterada="${(e) => this.atualizarCampo('tecnico',e.detail.valor)}">
                     ></selecao-tecnico>
 
                     <selecao-moto
+                        .valor="${this.dadosVistoria.placa}"
                         @placa-alterada="${(e) => this.atualizarCampo('placa',e.detail.valor)}">
                     ></selecao-moto>
 
                     <hodomotro-element
+                        .valor="${this.dadosVistoria.hodometro}"
                         @hodometro-alterada="${(e) => this.atualizarCampo('hodometro',e.detail.valor)}">
                     ></hodomotro-element>
 
                     <combustivel-nivel
+                        .valor="${this.dadosVistoria.combustivel}"
                         @combustivel-alterada="${(e) => this.atualizarCampo('combustivel', e.detail.valor)}">
                     ></combustivel-nivel>
 
@@ -187,14 +216,17 @@ ${comentario_geral}
                     <hr>
 
                     <documento-conformidade
+                        .valor="${this.dadosVistoria.documento}"
                         @documento-alterada="${(e) => this.atualizarCampo('documento', e.detail.valor)}">
                     ></documento-conformidade>
 
                     <epi-conformidade
+                        .valor="${this.dadosVistoria.EPI}"
                         @epi-alterada="${(e) => this.atualizarCampo('EPI', e.detail.valor)}">
                     ></epi-conformidade>
 
-                    <comentario-extra 
+                    <comentario-extra
+                        .valor="${this.dadosVistoria.comentario_conformidade}"
                         identificacao="comentario-conformidade"
                         @comentario-alterado="${(e) => this.atualizarCampo('comentario_conformidade', e.detail.valor)}">
                     ></comentario-extra>
@@ -203,6 +235,7 @@ ${comentario_geral}
                     <hr>
 
                     <checkbox-element
+                        .valor_atributo="${this.dadosVistoria.check_iluminacao_dianteira}"
                         @checkbox-alterado="${(e) => this.atualizarCampo('check_iluminacao_dianteira', e.detail.valor)}"
                         titulo="Iluminação Dianteira (Alta/Baixa)"
                         identificacao="check_iluminacao"
@@ -211,6 +244,7 @@ ${comentario_geral}
                     </checkbox-element>
 
                     <checkbox-element
+                        .valor_atributo="${this.dadosVistoria.check_luz_freio}"
                         @checkbox-alterado="${(e) => this.atualizarCampo('check_luz_freio', e.detail.valor)}"
                         titulo="Lanterna Traseira e Luz de Freio"
                         identificacao="check_luz_freio"
@@ -219,6 +253,7 @@ ${comentario_geral}
                     </checkbox-element>
 
                     <checkbox-element
+                        .valor_atributo="${this.dadosVistoria.check_setas}"
                         @checkbox-alterado="${(e) => this.atualizarCampo('check_setas', e.detail.valor)}"
                         titulo="Setas (D/E)"
                         identificacao="check_luz_setas"
@@ -226,7 +261,8 @@ ${comentario_geral}
                         >
                     </checkbox-element>
 
-                    <comentario-extra 
+                    <comentario-extra
+                        .valor="${this.dadosVistoria.comentario_tecnico_eletrica}"
                         identificacao="comentario-tecnico"
                         @comentario-alterado="${(e) => this.atualizarCampo('comentario_tecnico_eletrica', e.detail.valor)}">    
                     ></comentario-extra>
@@ -236,6 +272,7 @@ ${comentario_geral}
                     <hr>
 
                     <checkbox-element
+                        .valor_atributo="${this.dadosVistoria.check_twi}"
                         @checkbox-alterado="${(e) => this.atualizarCampo('check_twi', e.detail.valor)}"
                         titulo="Pneus (Sulco/TWI)"
                         identificacao="check_TWI"
@@ -244,6 +281,7 @@ ${comentario_geral}
                     </checkbox-element>
 
                     <checkbox-element
+                        .valor_atributo="${this.dadosVistoria.check_freio}"
                         @checkbox-alterado="${(e) => this.atualizarCampo('check_freio', e.detail.valor)}"
                         titulo="Freios (Cabo/Pastilha/Fluído)"
                         identificacao="check_freio"
@@ -252,6 +290,7 @@ ${comentario_geral}
                     </checkbox-element>
 
                     <checkbox-element
+                        .valor_atributo="${this.dadosVistoria.check_transmissao}"
                         @checkbox-alterado="${(e) => this.atualizarCampo('check_transmissao', e.detail.valor)}"
                         titulo="Transmissão (Corrente/Coroa)"
                         identificacao="check_transmisao"
@@ -260,6 +299,7 @@ ${comentario_geral}
                     </checkbox-element>
 
                     <checkbox-element
+                        .valor_atributo="${this.dadosVistoria.check_retrovisor_antena}"
                         @checkbox-alterado="${(e) => this.atualizarCampo('check_retrovisor_antena', e.detail.valor)}"
                         titulo="Retrovisores e Antena"
                         identificacao="check_retrovisor_antena"
@@ -267,7 +307,8 @@ ${comentario_geral}
                         >
                     </checkbox-element>
                     
-                    <comentario-extra 
+                    <comentario-extra
+                        .valor="${this.dadosVistoria.comentario_tecnico_mecanica}"
                         identificacao="comentario-mecanica"
                         @comentario-alterado="${(e) => this.atualizarCampo('comentario_tecnico_mecanica', e.detail.valor)}">    
                     ></comentario-extra>
@@ -278,14 +319,17 @@ ${comentario_geral}
                     <hr>
 
                     <lavagem-semanal
+                        .valor="${this.dadosVistoria.lavagem_semanal}"
                         @lavagem-alterada="${(e) => this.atualizarCampo('lavagem_semanal', e.detail.valor)}">
                     ></lavagem-semanal>
 
                     <conservacao-moto
+                        .valor="${this.dadosVistoria.conservacao}"
                         @conservacao-alterada="${(e) => this.atualizarCampo('conservacao', e.detail.valor)}">
                     ></conservacao-moto>
 
-                    <comentario-extra 
+                    <comentario-extra
+                        .valor="${this.dadosVistoria.comentario_tecnico_higienizacao}"
                         identificacao="comentario-higienizacao"
                         @comentario-alterado="${(e) => this.atualizarCampo('comentario_tecnico_higienizacao', e.detail.valor)}">    
                     ></comentario-extra>
@@ -294,10 +338,12 @@ ${comentario_geral}
                     <hr>
                     
                     <status-geral
+                        .valor="${this.dadosVistoria.status_geral}"
                         @status-alterada="${(e) => this.atualizarCampo('status_geral', e.detail.valor)}">
                     ></status-geral>
 
                     <moto-extra
+                        .valor="${this.dadosVistoria.moto_extra_entregue}"
                         @moto_extra-alterada="${(e) => this.atualizarCampo('moto_extra_entregue', e.detail.valor)}">
                     ></moto-extra>
 
@@ -305,14 +351,16 @@ ${comentario_geral}
                         <strong>Observe!</strong> Caso seja entregue algum veículo reserva ao técnico, selecione a placa do veículo nesta lista. E não se esqueça de adicionar a informação na Planilha de Controle!
                     </div>
                 
-                    <selecao-moto 
+                    <selecao-moto
+                        .valor="${this.dadosVistoria.moto_extra}"
                         identificacao="extra"
                         @placa-alterada="${(e) => this.atualizarCampo('moto_extra',e.detail.valor)}">
                     ></selecao-moto>
 
                     <h2>Observações Gerais</h2>
                     <hr>
-                    <comentario-extra 
+                    <comentario-extra
+                        .valor="${this.dadosVistoria.comentario_geral}"
                         identificacao="comentario-geral"
                         placeholder = "Descrever aqui qualquer detalhe como riscos na carenagem, ruídos anormais, previsão de troca de óleo e observações das checklists acima..."
                         legenda = "Observações Gerais"
@@ -332,7 +380,13 @@ ${comentario_geral}
                         class="btn btn btn-outline-light btn-block"
                         @click="${this.gerar_script_fechamento}"
                         >Gerar Fechamento da OS</button>
+                    <button 
+                        type="button" 
+                        class="btn btn btn-outline-danger btn-block"
+                        @click="${this.limpar_script_moto}"
+                        >Limpar Script Moto</button>
                 </div>
+                    
                 <div class="bg-dark text-light">
                     <alerta-toast id="meuAlerta"></alerta-toast>
                 </div>

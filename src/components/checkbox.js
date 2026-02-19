@@ -7,6 +7,7 @@ export class CheckBox_Element extends LitElement {
         titulo: { type: String },
         identificacao: {type: String},
         valor: {type: String},
+        valor_atributo: {type: String}
     };
 
     static styles = [
@@ -48,7 +49,7 @@ export class CheckBox_Element extends LitElement {
             <div class="bg-dark text-light">
                     
                 <div class="form-check" @change="${this._dispararCheck}">
-                    <input class="form-check-input" type="checkbox" id="${this.identificacao}" name="${this.titulo}" value="${this.valor}">
+                    <input ?checked="${this.valor_atributo === "OK"}" class="form-check-input" type="checkbox" id="${this.identificacao}" name="${this.titulo}" value="${this.valor}">
                     <label class="form-check-label" for="${this.identificacao}">${this.titulo}</label>
                 </div>
                 

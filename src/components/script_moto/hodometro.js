@@ -4,7 +4,8 @@ import bootstrapGlobal from 'bootstrap/dist/css/bootstrap.min.css?inline';
 export class Hodometro extends LitElement {
     // 1. Em vez de @property, use o objeto static properties
     static properties = {
-        titulo: { type: String }
+        titulo: { type: String },
+        valor:{type:String}
     };
 
     static styles = [
@@ -40,7 +41,8 @@ export class Hodometro extends LitElement {
                     <input 
                         type="number" 
                         class="form-control" 
-                        id="KM Atual" 
+                        id="KM Atual"
+                        value="${this.valor}"
                         placeholder="Adicione a Quilometragem Atual" 
                         name="value"
                         @change="${this._dispararHodometro}"

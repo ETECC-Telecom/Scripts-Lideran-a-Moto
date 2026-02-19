@@ -1,10 +1,13 @@
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
+// const BASE_PATH = window.location.hostname.includes('github.io') 
+//   ? '/Scripts-Lideran-a-Moto/' 
+//   : './';
 export default defineConfig({
   // O ponto antes da barra faz os caminhos ficarem relativos (./)
   // Isso corrige o erro de MIME type e 404 no mobile/GitHub Pages
-  base: '/Scripts-Lideran-a-Moto/',
+  base: './',
   plugins: [
     VitePWA({
       registerType: 'autoUpdate', // Atualiza o PWA automaticamente quando há código novo

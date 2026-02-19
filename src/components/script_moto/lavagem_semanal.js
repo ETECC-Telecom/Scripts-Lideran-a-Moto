@@ -4,7 +4,8 @@ import bootstrapGlobal from 'bootstrap/dist/css/bootstrap.min.css?inline';
 export class Lavagem_Semanal extends LitElement {
     // 1. Em vez de @property, use o objeto static properties
     static properties = {
-        titulo: { type: String }
+        titulo: { type: String },
+        valor:{type:String}
     };
 
     static styles = [
@@ -37,11 +38,11 @@ export class Lavagem_Semanal extends LitElement {
                 <div class="mb-3 mt-3" @change="${this._dispararEPI}">
                     <label class="form-label">Veículo Lavado na Semana?</label>
                     <div class="form-check">
-                        <input type="radio" class="form-check-input" id="radio8" name="opt-lavagem" value="Sim" checked>
+                        <input type="radio" class="form-check-input" id="radio8" name="opt-lavagem" value="Sim" ?checked="${this.valor === 'Sim'}">
                         <label class="form-check-label" for="radio8">Sim</label>
                     </div>
                     <div class="form-check">
-                        <input type="radio" class="form-check-input" id="radio9" name="opt-lavagem" value="Não">
+                        <input type="radio" class="form-check-input" id="radio9" name="opt-lavagem" value="Não" ?checked="${this.valor === 'Não'}">
                         <label class="form-check-label" for="radio9">Não</label>
                     </div>
                 </div>

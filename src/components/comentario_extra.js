@@ -7,7 +7,8 @@ export class Comentario_Extra extends LitElement {
     static properties = {
         identificacao: { type: String },
         placeholder: {type: String},
-        legenda: {type: String}
+        legenda: {type: String},
+        valor: {type: String}
     };
 
     static styles = [
@@ -75,7 +76,7 @@ export class Comentario_Extra extends LitElement {
                         name="text"
                         @input="${this._dispararComentario}"
                         placeholder="${this.placeholder}"
-                        ></textarea>
+                        >${this.valor}</textarea>
                 </div>
             </div>
         `;

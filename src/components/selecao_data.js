@@ -4,7 +4,8 @@ import bootstrapGlobal from 'bootstrap/dist/css/bootstrap.min.css?inline';
 export class Selecao_Data extends LitElement {
     // 1. Em vez de @property, use o objeto static properties
     static properties = {
-        titulo: { type: String }
+        titulo: { type: String },
+        valor:{type:String}
     };
 
     static styles = [
@@ -45,7 +46,7 @@ export class Selecao_Data extends LitElement {
                         type="date" 
                         id="data" 
                         name="Data"
-                        value="${this.dataAtual}"
+                        value="${this.valor.split('/').reverse().join('-')}"
                         @change="${this._dispararData}"
                         >
                 </div>

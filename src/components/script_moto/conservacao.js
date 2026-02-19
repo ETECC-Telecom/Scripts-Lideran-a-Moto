@@ -4,7 +4,8 @@ import bootstrapGlobal from 'bootstrap/dist/css/bootstrap.min.css?inline';
 export class Conservacao extends LitElement {
     // 1. Em vez de @property, use o objeto static properties
     static properties = {
-        titulo: { type: String }
+        titulo: { type: String},
+        valor:{type:String}
     };
 
     static styles = [
@@ -37,15 +38,15 @@ export class Conservacao extends LitElement {
                 <div class="mb-3 mt-3" @change="${this._dispararEPI}">
                     <label class="form-label">Estado Geral de Conservação:</label>
                     <div class="form-check">
-                        <input type="radio" class="form-check-input" id="radio10" name="opt-estado" value="Ótimo" checked>
+                        <input type="radio" class="form-check-input" id="radio10" name="opt-estado" value="Ótimo" ?checked="${this.valor === 'Ótimo'}">
                         <label class="form-check-label" for="radio10">Ótimo</label>
                     </div>
                     <div class="form-check">
-                        <input type="radio" class="form-check-input" id="radio11" name="opt-estado" value="Regular">
+                        <input type="radio" class="form-check-input" id="radio11" name="opt-estado" value="Regular" ?checked="${this.valor === 'Regular'}">
                         <label class="form-check-label" for="radio11">Regular</label>
                     </div>
                     <div class="form-check">
-                        <input type="radio" class="form-check-input" id="radio12" name="opt-estado" value="Ruim">
+                        <input type="radio" class="form-check-input" id="radio12" name="opt-estado" value="Ruim" ?checked="${this.valor === 'Ruim'}">
                         <label class="form-check-label" for="radio12">Ruim</label>
                     </div>
                 </div>

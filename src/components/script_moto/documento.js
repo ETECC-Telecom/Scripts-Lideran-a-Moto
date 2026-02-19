@@ -4,7 +4,8 @@ import bootstrapGlobal from 'bootstrap/dist/css/bootstrap.min.css?inline';
 export class Documento extends LitElement {
     // 1. Em vez de @property, use o objeto static properties
     static properties = {
-        titulo: { type: String }
+        titulo: { type: String },
+        valor:{type:String}
     };
 
     static styles = [
@@ -37,11 +38,11 @@ export class Documento extends LitElement {
                 <div class="mb-3 mt-3" @change="${this._dispararDocumento}">
                     <label class="form-label">Documentação (CRLV):</label>
                     <div class="form-check">
-                        <input type="radio" class="form-check-input" id="radio4" name="opt-doc" value="OK" checked>
+                        <input type="radio" class="form-check-input" id="radio4" name="opt-doc" value="OK" ?checked="${this.valor === 'OK'}">
                         <label class="form-check-label" for="radio4">OK</label>
                     </div>
                     <div class="form-check">
-                        <input type="radio" class="form-check-input" id="radio5" name="opt-doc" value="Irregular">
+                        <input type="radio" class="form-check-input" id="radio5" name="opt-doc" value="Irregular" ?checked="${this.valor === 'Irregular'}">
                         <label class="form-check-label" for="radio5">Irregular</label>
                     </div>
                 </div>
