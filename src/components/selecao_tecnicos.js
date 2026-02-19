@@ -35,7 +35,7 @@ export class Selecao_Tecnico extends LitElement {
         return html`
             <div class="bg-dark text-light">
                 <div class="mb-3 mt-3">
-                    <label for="Técnico" class="form-label"></label>
+                    <label for="Técnico" class="form-label">Selecione o Técnico</label>
                     <select 
                         class="form-select"
                         @change="${this._dispararTecnico}"

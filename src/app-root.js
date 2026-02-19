@@ -6,6 +6,7 @@ import { Navebar } from './components/navebar';
 import {Home_Page} from './pages/home'
 import { Erro_404 } from './pages/erro_404';
 import { Script_Moto } from './pages/script_vistoria_moto';
+import { Script_Ferramental } from './pages/script_vistoria_ferramental';
 
 // Detecta se estamos no GitHub Pages ou Localhost
 const BASE_PATH = window.location.hostname.includes('github.io') 
@@ -30,6 +31,10 @@ export class AppRoot extends LitElement {
       {
         path: `${BASE_PATH}/script-vistoria-moto`,
         render: () => html`<moto-script></moto-script>`,
+      },
+      {
+        path: `${BASE_PATH}/script-vistoria-ferramental`,
+        render: () => html`<ferramental-script></ferramental-script>`,
       },
       {
         path: '/perfil/:name',

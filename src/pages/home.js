@@ -44,7 +44,7 @@ export class Home_Page extends LitElement {
                     </li>
                     <li class="nav-item">
                         <div class="d-grid">
-                            <a class="btn btn-outline-light m-3" href="#">Fechamento de Vistoria de Ferramental</a>
+                            <a class="btn btn-outline-light m-3" href="${this.url_config}/script-vistoria-ferramental">Fechamento de Vistoria de Ferramental</a>
                         </div>
                     </li>
                     <li class="nav-item">
