@@ -29,7 +29,7 @@ export class Home_Page extends LitElement {
                 <ul class="nav flex-column text-center">
                     <li class="nav-item">
                         <div class="d-grid">
-                            <a class="btn btn-outline-light m-3" href="#">Abertura de Auditoria Externa Pós Atendimento</a>
+                            <a class="btn btn-outline-light m-3" href="${this.url_config}/script-aud-pos">Abertura de Auditoria Externa Pós Atendimento</a>
                         </div>
                     </li>
                     <li class="nav-item">
