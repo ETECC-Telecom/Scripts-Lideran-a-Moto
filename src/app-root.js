@@ -8,6 +8,8 @@ import { Erro_404 } from './pages/erro_404';
 import { Script_Moto } from './pages/script_vistoria_moto';
 import { Script_Ferramental } from './pages/script_vistoria_ferramental';
 import { Script_Aud_Pos_Abertura } from './pages/script_aud_pos_abertura';
+import { Script_Aud_Pos_Fechamento } from './pages/script_aud_pos_fechamento';
+import { Script_Aud_Fechamento } from './pages/script_aud_fechamento';
 
 // Detecta se estamos no GitHub Pages ou Localhost
 const BASE_PATH = window.location.hostname.includes('github.io') 
@@ -40,6 +42,14 @@ export class AppRoot extends LitElement {
       {
         path: `${BASE_PATH}/script-aud-pos`,
         render: () => html`<aud-pos-abertura></aud-pos-abertura>`,
+      },
+      {
+        path: `${BASE_PATH}/script-aud-fechamento`,
+        render: () => html`<aud-pos-fechamento></aud-pos-fechamento>`,
+      },
+      {
+        path: `${BASE_PATH}/script-fechamento`,
+        render: () => html`<aud-fechamento></aud-fechamento>`,
       },
       {
         path: '/perfil/:name',

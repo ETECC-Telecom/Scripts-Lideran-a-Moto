@@ -34,12 +34,12 @@ export class Home_Page extends LitElement {
                     </li>
                     <li class="nav-item">
                         <div class="d-grid">
-                            <a class="btn btn-outline-light m-3" href="#">Fechamento de Auditoria Externa Pós Atendimento</a>
+                            <a class="btn btn-outline-light m-3" href="${this.url_config}/script-aud-fechamento">Fechamento de Auditoria Externa Pós Atendimento</a>
                         </div>
                     </li>
                     <li class="nav-item">
                         <div class="d-grid">
-                            <a class="btn btn-outline-light m-3" href="#">Fechamento de Auditoria Externa</a>
+                            <a class="btn btn-outline-light m-3" href="${this.url_config}/script-fechamento">Fechamento de Auditoria Externa</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -55,7 +55,7 @@ export class Home_Page extends LitElement {
                 </ul>
                 
                 <br>
-                <p class="text-center">Versão 0.0.1</p>
+                <p class="text-center">Versão 1.0.0</p>
         
             </div>
         `;

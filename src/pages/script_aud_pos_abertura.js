@@ -101,7 +101,7 @@ Check-list do que foi realizado pelo técnico no local.
 
 ${this.dadosVistoria.resumo_os}
 
-> Não se esqueça de colher do cliente um feedback sobre a visita recebida pelo técnico, pedindo para pontuar de 0 a 5, para que possamos além de todos os dados coletados, levantar o Status do Feedback Cliente.    
+> Não se esqueça de colher do cliente um feedback sobre a visita recebida pelo técnico, para que possamos além de todos os dados coletados, levantar o Status do Feedback Cliente.    
 `
         const mensagem = Copiar_Area_Transferencia(SCRIPT_ABERTURA)
         const toast = this.shadowRoot.getElementById('meuAlerta');
