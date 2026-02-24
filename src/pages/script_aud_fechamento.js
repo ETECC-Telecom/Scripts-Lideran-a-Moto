@@ -32,7 +32,9 @@ export class Script_Aud_Fechamento extends LitElement {
         // Transformamos o CSS importado em um objeto que o Lit entende
         unsafeCSS(bootstrapGlobal), 
         css`
-        
+        :host{
+            $success: #5a2d9c;
+        }
         `
       ];
 

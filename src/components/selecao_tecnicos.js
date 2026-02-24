@@ -50,6 +50,9 @@ export class Selecao_Tecnico extends LitElement {
                         <option ?selected="${this.valor === 'Lucas Rodrigues de Camargo'}" value="Lucas Rodrigues de Camargo">Lucas Rodrigues de Camargo</option>
                         <option ?selected="${this.valor === 'Renan Gomes da Silva'}" value="Renan Gomes da Silva">Renan Gomes da Silva</option>
                         <option ?selected="${this.valor === 'Ricardo Braz dos Santos'}" value="Ricardo Braz dos Santos">Ricardo Braz dos Santos</option>
+                        <option ?selected="${this.valor === 'João Pedro Costa Correia'}" value="João Pedro Costa Correia">João Pedro Costa Correia</option>
+                        <option ?selected="${this.valor === 'Jhonata dos Santos Murbak'}" value="Jhonata dos Santos Murbak">Jhonata dos Santos Murbak</option>
+                        <option ?selected="${this.valor === 'Luiz Gustavo do Nascimento Ferregato'}" value="Luiz Gustavo do Nascimento Ferregato">Luiz Gustavo do Nascimento Ferregato</option>
                     </select>
                 </div>
             </div>
