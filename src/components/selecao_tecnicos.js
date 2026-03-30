@@ -42,13 +42,14 @@ export class Selecao_Tecnico extends LitElement {
                         >
                         <option value="Técnico Não Selecionado">Selecione um Técnico</option>
                         <option ?selected="${this.valor === 'Alexsandro Henrique da Silva Lira'}" value="Alexsandro Henrique da Silva Lira">Alexsandro Henrique da Silva Lira</option>
-                        <option ?selected="${this.valor === 'Allan Soares da Silva'}" value="Allan Soares da Silva">Allan Soares da Silva</option>
                         <option ?selected="${this.valor === 'Augusto Cesar Sofiati'}" value="Augusto Cesar Sofiati">Augusto Cesar Sofiati</option>
                         <option ?selected="${this.valor === 'Bruno Dos Santos Alencar'}" value="Bruno Dos Santos Alencar">Bruno Dos Santos Alencar</option>
                         <option ?selected="${this.valor === 'Clayton Cerqueira de Souza'}" value="Clayton Cerqueira de Souza">Clayton Cerqueira de Souza</option>
-                        <option ?selected="${this.valor === 'Gabriel Batista Silva'}" value="Gabriel Batista Silva">Gabriel Batista Silva</option>
+                        <option ?selected="${this.valor === 'Fernando Gustavo Alves Dos Santos'}" value="Fernando Gustavo Alves Dos Santos">Fernando Gustavo Alves Dos Santos</option>
+                        <option ?selected="${this.valor === 'Gustavo de Souza Lima'}" value="Gustavo de Souza Lima">Gustavo de Souza Lima</option>
                         <option ?selected="${this.valor === 'Lucas Rodrigues de Camargo'}" value="Lucas Rodrigues de Camargo">Lucas Rodrigues de Camargo</option>
                         <option ?selected="${this.valor === 'Renan Gomes da Silva'}" value="Renan Gomes da Silva">Renan Gomes da Silva</option>
+                        <option ?selected="${this.valor === 'Raphael dos Anjos'}" value="Raphael dos Anjos">Raphael dos Anjos</option>
                         <option ?selected="${this.valor === 'Ricardo Braz dos Santos'}" value="Ricardo Braz dos Santos">Ricardo Braz dos Santos</option>
                         <option ?selected="${this.valor === 'João Pedro Costa Correia'}" value="João Pedro Costa Correia">João Pedro Costa Correia</option>
                         <option ?selected="${this.valor === 'Jhonata dos Santos Murbak'}" value="Jhonata dos Santos Murbak">Jhonata dos Santos Murbak</option>

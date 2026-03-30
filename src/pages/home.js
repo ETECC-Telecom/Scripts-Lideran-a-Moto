@@ -55,7 +55,7 @@ export class Home_Page extends LitElement {
                 </ul>
                 
                 <br>
-                <p class="text-center">Versão 1.0.0</p>
+                <p class="text-center">Versão 1.0.1</p>
         
             </div>
         `;

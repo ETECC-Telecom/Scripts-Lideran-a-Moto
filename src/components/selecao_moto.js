@@ -46,7 +46,7 @@ export class Selecao_Moto extends LitElement {
                         <option value="ETE 0C54" ?selected="${this.valor === 'ETE 0C54'}">ETE 0C54</option>
                         <option value="FGY 9J67" ?selected="${this.valor === 'FGY 9J67'}">FGY 9J67</option>
                         <option value="ETC 0I72" ?selected="${this.valor === 'ETC 0I72'}">ETC 0I72</option>
-                        <option value="ETC 0I51" ?selected="${this.valor === 'ETC 0I51'}">ETC 0I51</option>
+                        <option value="ETC 0G51" ?selected="${this.valor === 'ETC 0G51'}">ETC 0G51</option>
                         <option value="ETE 0C21" ?selected="${this.valor === 'ETE 0C21'}">ETE 0C21</option>
                         <option value="ETE 0I43" ?selected="${this.valor === 'ETE 0I43'}">ETE 0I43</option>
                         <option value="DWA 9B76" ?selected="${this.valor === 'DWA 9B76'}">DWA 9B76</option>
